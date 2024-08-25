@@ -109,7 +109,7 @@ def main():
     st.header("Bajaj Finserv Health Challenge: By Pratham Gupta")
     st.markdown("<h1 style='text-align: center; color: red;'>21BCE1310</h1>", unsafe_allow_html=True)
 
-    input_data = st.text_area("Enter JSON data", placeholder='{"user_id": "21BCE1966", "college_email": "abc@example.com", "college_roll_number": "21BCE1966", "numbers": [1, 2, 3], "alphabets": ["A", "C", "z"]}')
+    input_data = st.text_area("Enter JSON data", placeholder='{"user_id": "21BCE1310", "college_email": "abc@example.com", "college_roll_number": "21BCE1310", "numbers": [1, 2, 3], "alphabets": ["A", "C", "z"]}')
 
     options = ["Alphabets & Numbers", "Symbols"]
     selected_option = st.selectbox("Select an option", options)

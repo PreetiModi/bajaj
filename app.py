@@ -107,7 +107,7 @@ def main():
     )
 
     st.header("Bajaj Finserv Health Challenge: By Preeti Modi")
-    st.markdown("<h1 style='text-align: center; color: violet;'>21BCE1310</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: green;'>21BCE1310</h1>", unsafe_allow_html=True)
 
     input_data = st.text_area("Enter JSON data", placeholder='{"data": ["A", "C", "z"]}')
     options = ["Alphabets & Numbers", "Symbols"]

@@ -83,5 +83,5 @@ def main():
         # Render the response based on the selected option
         render_response(response, selected_option)
 
-if _name_ == "_main_":
+if __name__== "__main__":
     main()

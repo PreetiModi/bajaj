@@ -1,58 +1,10 @@
-from fastapi import FastAPI, Request
-import uvicorn
 import streamlit as st
 import requests
 import json
-import asyncio
 
-# Initialize FastAPI
-app = FastAPI()
-
-# FastAPI Endpoints
-@app.get("/")
-async def root():
-    return {"message": "Hello, World!"}
-
-@app.get("/bfhl")
-async def get_operation_code():
-    response = {
-        "operation_code": 1
-    }
-    return response
-
-@app.post("/process")
-async def process_request(request: Request):
-    # Get the request body
-    body = await request.json()
-
-    # Extract the required data from the request body
-    user_id = body.get("user_id", "")
-    college_email = body.get("college_email", "")
-    college_roll_number = body.get("college_roll_number", "")
-    numbers = body.get("numbers", [])
-    alphabets = body.get("alphabets", [])
-
-    # Find the highest lowercase alphabet
-    lowercase_alphabets = [char for char in alphabets if char.islower()]
-    highest_lowercase_alphabet = max(lowercase_alphabets) if lowercase_alphabets else ""
-
-    # Prepare the response
-    response = {
-        "status": "success",
-        "user_id": user_id,
-        "college_email": college_email,
-        "college_roll_number": college_roll_number,
-        "numbers": numbers,
-        "alphabets": alphabets,
-        "highest_lowercase_alphabet": highest_lowercase_alphabet
-    }
-
-    return response
-
-# Streamlit Application
 def process_data(data):
-    # Send a POST request to the FastAPI backend
-    url = "http://localhost:8000/process"  # Use localhost for development; replace with cloud URL when deployed
+    # Send a POST request to the backend API
+    url = "http://your-api-url.com/endpoint"  # Replace with your backend API URL
     headers = {"Content-Type": "application/json"}
     response = requests.post(url, headers=headers, data=json.dumps(data))
 
@@ -131,16 +83,5 @@ def main():
         # Render the response based on the selected option
         render_response(response, selected_option)
 
-# Run FastAPI and Streamlit together
-def start_fastapi():
-    config = uvicorn.Config(app, host="0.0.0.0", port=8000)
-    server = uvicorn.Server(config)
-    loop = asyncio.get_event_loop()
-    loop.run_in_executor(None, server.run)
-
-if __name__ == "__main__":
-    # Start FastAPI in the background
-    start_fastapi()
-    
-    # Run the Streamlit app
+if _name== "main_":
     main()
